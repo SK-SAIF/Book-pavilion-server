@@ -14,11 +14,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const port = 5000;
 
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.wkh8y.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://bookUser:dJKGNKYIpw8WOzcF@cluster0.wkh8y.mongodb.net/BookPavilion?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
-  const booksCollection = client.db(`${process.env.DB_NAME}`).collection(`${process.env.DB_COLLECTION}`);
-  const ordersCollection = client.db(`${process.env.DB_NAME}`).collection(`orders`);
+  const booksCollection = client.db(`BookPavilion`).collection(`Books`);
+  const ordersCollection = client.db(`BookPavilion`).collection(`orders`);
 
   app.post('/addBook',(req,res)=>{
     const newBookInfo=req.body;
@@ -73,4 +73,4 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.listen(process.env.PORT || port);
+app.listen( port);
