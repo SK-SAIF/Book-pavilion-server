@@ -70,7 +70,7 @@ client.connect(err => {
 });
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Hello World with heroku!')
 })
 
 app.listen(port);
